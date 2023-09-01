@@ -62,9 +62,11 @@ const orderDetails = {
   Address:address,
   Price: totalPrice,
 };
+
 useEffect(() => {
   console.log(orderDetails);
-}, []);  
+}, []); 
+
   return (
     <div>
       {selectedProductDetails.length > 0 ? (
@@ -93,7 +95,6 @@ useEffect(() => {
             <input value={mobileNumber} onChange={e =>setMobileNumber(e.target.value)} type="text" className="w-full bg-gray-200 rounded-lg px-4 py-2 mb-3"placeholder="Mobile Number"></input>
             <input value={email} onChange={e =>setEmail(e.target.value)} type="text" className="w-full bg-gray-200 rounded-lg px-4 py-2 mb-3"placeholder="Email address"></input>
             <input value={address} onChange={e =>setAddress(e.target.value)} type="text" className="w-full bg-gray-200 rounded-lg px-4 py-2 mb-3"placeholder="Address"></input>
-
         </div>
         <div className="p-5">
           <div className="flex mb-2">
@@ -109,11 +110,15 @@ useEffect(() => {
             <h3>${totalPrice}</h3>
           </div>
         </div>
+        {selectedProductDetails.length > 0 ? (
         <div className="flex justify-center my-2">
           <Link href={"/submit"}>
             <button type="submit" className="bg-emerald-400 p-2 rounded-xl text-white">PAY ${totalPrice}</button>
           </Link>
         </div>
+        ):(
+          <div> </div> 
+        )};
       <footer className="sticky bottom-0 text-white bg-black w-full flex justify-center space-x-24 p-5">
         <Link href={"/"}>Home</Link>
         <Link href={"/checkout"}>Cart</Link>
